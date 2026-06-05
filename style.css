@@ -1,0 +1,87 @@
+ body{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(to left, #4facfe, #fe0094);
+        font-family: "Gabarito", sans-serif
+}
+
+.login-box{
+
+    width: 320px;
+    height: 350px;
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+}
+.input-box{
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+
+}
+
+.login-box h1{
+
+    text-align: center;
+}
+.input-box input{
+    margin-bottom: 15px; 
+    padding-left: 33px;
+    width: 100%;
+
+
+}
+input{
+border: 2px solid lightgray;
+outline: none;
+flex: 1;
+padding: 8px;
+border-radius: 4px;
+
+}
+
+.input-box .fa-regular{
+
+    margin-left: 8px;
+    position: absolute;
+    margin-bottom: 15px;
+    
+    
+}
+
+.input-box .fa-solid{
+
+    margin-left: 8px;
+    position: absolute;
+       margin-bottom: 15px;
+ 
+}
+.login-box .but{
+
+    width: 280px;
+    margin-left: 9px;
+    padding: 3.5px;
+    background-color: rgb(28, 28, 240);
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: white;
+    
+}
+
+.but:disabled{
+
+background-color: gray;
+cursor: pointer;
+opacity: 0.5;
+
+}
+.login-box .anchor{
+    text-align: center;
+    text-decoration: none;
+    margin-left: 80px;
+}
+

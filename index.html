@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+    <title>Login_Form_Validation</title>
+</head>
+<body>
+   
+    <div class="login-box">
+        <h1>Login</h1> 
+<p style="color: red;" id="nameError"></p>
+        <div class="input-box">
+            
+            <i class="fa-solid fa-user" style="color: rgb(0, 0, 0);"></i>
+            <input id="nameBox" type="text" placeholder="User name">
+
+            
+        </div>
+            
+            <p style="color: red;" id="emailError"></p>
+        <div class="input-box">
+            
+            <i class="fa-regular fa-envelope"></i>
+            <input id="emailBox" type="email" placeholder="Email">
+
+        </div>
+            <p style="color: red;" id="passwordError"></p>
+        <div class="input-box">
+            <i class="fa-solid fa-key"></i>
+            <input id="passwordBox" type="password" placeholder="Password">
+
+        </div>
+
+<button id="btn" class="but">Submit</button>
+<a class="anchor" href="www.google.com">Forgot password?</a>
+    </div>
+   
+<script>
+
+
+
+let nameBox = document.getElementById("nameBox");
+let nameError = document.getElementById("nameError");
+
+let passwordBox = document.getElementById("passwordBox");
+
+
+nameBox.addEventListener("input", validatename)
+nameBox.addEventListener("click", validatename)
+nameBox.addEventListener("blur", hideNameError)
+emailBox.addEventListener("click", validateEmail)
+emailBox.addEventListener("input", validateEmail)
+emailBox.addEventListener("blur", hideEmailError)
+
+passwordBox.addEventListener("click", validatePassword)
+passwordBox.addEventListener("input", validatePassword)
+
+passwordBox.addEventListener("blur", hidePasswordError)
+
+let nameValid = false;
+let emailValid = false;
+let passwordValid = false;
+
+
+
+function hideNameError(){
+
+nameError.textContent = ""
+nameBox.style.border = "2px solid lightgray";
+
+}
+
+let btn = document.getElementById("btn");
+
+    btn.disabled = true;
+
+function checkFormValidity(){
+
+    
+if(nameValid  && emailValid && passwordValid){
+
+    btn.disabled = false;
+
+}
+
+else{
+
+    btn.disabled = true;
+}
+
+}
+
+
+function validatename(){
+
+    let name = nameBox.value;
+    
+
+
+    emailError.textContent = "";
+    passwordError.textContent ="";
+
+    if(name === ""){
+
+        nameError.textContent = "Name is required";
+        nameValid = false;
+                nameBox.style.border = "2px solid red";
+
+    }
+
+    else if(name.includes(" ")){
+
+
+        nameError.textContent = "Space not allowed"
+        nameValid = false;
+                nameBox.style.border = "2px solid red";
+
+
+    }
+
+    else{
+        nameError.textContent = ""
+        nameValid = true;
+nameBox.style.border = "2px solid lightgray";
+
+    }
+    
+checkFormValidity();
+
+}
+
+function hideEmailError(){
+
+emailError.textContent = ""
+emailBox.style.border = "2px solid lightgray";
+}
+
+function validateEmail(){
+
+
+    let email = emailBox.value;
+
+     nameError.textContent = "";
+    passwordError.textContent ="";
+
+    if(email === ""){
+
+document.getElementById("emailError").textContent = "Email is required"
+emailValid = false;
+emailBox.style.border = "2px solid red";
+
+    }
+
+    else if(email.includes("@") && email.includes(".com")){
+
+        document.getElementById("emailError").textContent = ""
+        emailValid = true;
+emailBox.style.border = "2px solid lightgray";
+
+    }
+
+    else{
+
+        document.getElementById("emailError").textContent = "Invalid Email"
+        emailValid = false;
+                emailBox.style.border = "2px solid red";
+
+
+    }
+
+    checkFormValidity();
+
+}
+
+function hidePasswordError(){
+
+passwordError.textContent = ""
+passwordBox.style.border = "2px solid lightgray";
+}
+
+function validatePassword(){
+
+    
+
+    let password = passwordBox.value;
+
+    passwordError.textContent = "";
+    emailError.textContent = "";
+
+    if(password === ""){
+
+        document.getElementById("passwordError").textContent = "Password Required";
+        passwordValid = false;
+                passwordBox.style.border = "2px solid red";
+
+    }
+
+    else if(password.length < 6){
+
+        document.getElementById("passwordError").textContent = "Password too short";
+        passwordValid = false;
+                passwordBox.style.border = "2px solid red";
+
+    }
+
+    else if(password.length <= 6 ){
+
+
+        document.getElementById("passwordError").textContent = "Add atlease One special character";
+                passwordValid = false;
+
+                passwordBox.style.border = "2px solid red";
+
+    }
+
+    else if(password.includes("!") || password.includes("@") || password.includes("$") || password.includes("%") || password.includes("#")){
+
+        document.getElementById("passwordError").textContent = "";
+                passwordValid = true;
+passwordBox.style.border = "2px solid lightgray";
+
+    }
+
+else{
+ 
+    document.getElementById("passwordError").textContent = "";
+    passwordValid = true;
+passwordBox.style.border = "2px solid lightgray";
+
+}
+
+checkFormValidity();
+
+}
+
+btn.addEventListener("click", function(){
+
+alert("Login Successfully")
+
+})
+
+
+    </script>
+
+</body>
+</html>
